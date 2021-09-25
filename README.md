@@ -1,5 +1,5 @@
 # arnaud-rco
-Ateliers numérique Repair Café Orsay
+Ateliers numériques Repair Café Orsay
 
 Nous préparons les animations du  "repair café numérique" de FESTISOL avec des maquettes, et la présentation de Nathan ( éco-délégué du Lycée Blaise Pascal d’Orsay ) sur le numérique vert. 
 
