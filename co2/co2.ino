@@ -29,6 +29,8 @@ const int TS_LEFT=163,TS_RT=909,TS_TOP=170,TS_BOT=927;
 
 int CO2; 
 int8_t Temp;
+boolean flag ; // flag si affiche la valeur relative 
+int co2_min = 5000 ; // valeur relative 
 
 TouchScreen ts = TouchScreen(XP, YP, XM, YM, 300);
 
@@ -93,11 +95,16 @@ void co2(){   // affichage du taux de CO2
         tft.setTextColor(YELLOW);
           tft.setCursor(0, 0);
     tft.print("CO2:");
-    tft.println(CO2);
-    
-   tft.print("T:"); 
+    if ( flag ) {
+      tft.println(CO2 - co2_min + 400);
+    } else { // affiche la température
+      tft.println(CO2);
+         tft.print("T:"); 
     tft.print(Temp);
     tft.println(" C");
+    }
+    
+
    
 }
 
@@ -114,6 +121,7 @@ void loop(void)
         usual documented command with getCO2(false) */
 
         CO2 = myMHZ19.getCO2();                             // Request CO2 (as ppm)
+        if ( CO2 < co2_min )co2_min = CO2;
         co2();
  //       Serial.print("CO2 (ppm): ");                      
  //       Serial.println(CO2);                                
@@ -138,10 +146,12 @@ void loop(void)
     if (on_btn.justPressed()) {
         on_btn.drawButton(true);
         tft.fillRect(40, 80, 160, 80, GREEN);
+        flag = true;
     }
     if (off_btn.justPressed()) {
         off_btn.drawButton(true);
         tft.fillRect(40, 80, 160, 80, RED);
+        flag = false;
 
         
     }
