@@ -14,17 +14,20 @@
 #define PinB 2 //  broche enable du L298N pour le deuxième moteur
 #define SpeedA 5 // Premier moteur
 #define SpeedB 4 // Deuxième moteur
+#define DROITE 1 // tourne à droite
+#define GAUCHE 2 // tourne à gauche
+#define MILIEU 510 // pont de résistance 1024 / 2 environ
 
+const int sensibilite = 50; // écart admissible par rapport à la valeur initiale
 
-const int sensibilite = 60; // écart admissible par rapport à la valeur initiale
+int initial ; // état initial du capteur
 
-int initial; // état initial du capteur de droite
-// int initialGauche; // état initial du capteur de gauche
+int dir= -1; // direction 0 : tout droit
 
 int vitesse = 1000; // 0 à 1023 PWM qui contrôle la vitesse des moteurs
 
 unsigned long tempoLampe = 0;        // temporisation de 2s 
-const long intervalLampe = 500; 
+unsigned long intervalLampe = 2000; 
 
 void setup() {
   Serial.begin(115200);
@@ -33,51 +36,64 @@ void setup() {
   pinMode(PinA, OUTPUT);
   pinMode(SpeedB, OUTPUT);
   pinMode(PinB, OUTPUT);
-
-// test moteur 
-  digitalWrite(PinA, HIGH);digitalWrite(PinB, HIGH);
-  analogWrite(SpeedA,vitesse);analogWrite(SpeedB,vitesse);
-delay(500);
-
- // on se donne le temps de placer le robot à son point de départ
-  analogWrite(SpeedA,0);
-analogWrite(SpeedB,0);
-  // lecture des valeurs initiales (on suppose que les capteurs sont de part et d'autre de la ligne)
   initial = analogRead(capteur);
-  Serial.print("Valeur initiale ");
-    Serial.println(initial); 
-    initial = 520;
+  bip(); // test moteur 
+ //   digitalWrite(PinA, LOW);digitalWrite(PinB, LOW);// marche arriere
+
+         if (initial> 100){   // lecture des valeurs initiales (on suppose que les capteurs sont de part et d'autre de la ligne)
+             bip();
+         } else{ while(1){ // capteur pas branché
+           initial = analogRead(capteur);
+            Serial.print("capteur pas branché "); Serial.println(initial-MILIEU); 
+            delay(500);
+          }
+         }
+     if(abs( initial-MILIEU) < (sensibilite/2)){
+       bip();
+     } else{
+      initial = MILIEU;
+     }
     delay(2000);
-    vitesse = 700;// 700
+    vitesse = 800;// 700
 }
-
+void bip(){ // test moteur 
+               analogWrite(SpeedA,vitesse);analogWrite(SpeedB,vitesse);
+                           delay(200);
+                analogWrite(SpeedA,0);analogWrite(SpeedB,0); 
+                 delay(400);          
+}
 void loop() {
-
+  int valeur ;
+  valeur = analogRead(capteur);
   // temporisation de 2s pour moteur
     unsigned long currentMillis = millis();
    if(currentMillis - tempoLampe > intervalLampe) {
           Serial.println("on s'arrête");
     digitalWrite(SpeedA, 0);
     digitalWrite(SpeedB, 0);
-        tempoLampe=currentMillis;
    }
-  int valeur ;
-  valeur = analogRead(capteur);
-
   if (abs(valeur - initial) < sensibilite)  {
-          Serial.println(valeur);
-   analogWrite(SpeedA, vitesse);
+    if(dir!= 0){ 
+      Serial.println(valeur);Serial.println("tout droit");
+      dir=0; tempoLampe=currentMillis;intervalLampe = 2000;
+         analogWrite(SpeedA, vitesse);
     analogWrite(SpeedB, vitesse);
+    }
   } else if ( valeur > initial ) {
-     tempoLampe=currentMillis;
+      if(dir!= GAUCHE){ 
       Serial.print(valeur);Serial.println("on tourne à gauche");
     digitalWrite(SpeedA, 0);
     analogWrite(SpeedB, vitesse);
+      dir=GAUCHE; tempoLampe=currentMillis;intervalLampe = 4000;
+    }
   }   else if (valeur < initial) {
-          Serial.print(valeur);Serial.println("on tourne à droite");
-         tempoLampe=currentMillis;
+    if(dir!= DROITE){ 
+     Serial.print(valeur);Serial.println("on tourne à droite");
     analogWrite(SpeedA, vitesse);
     digitalWrite(SpeedB, 0);
+      dir=DROITE; tempoLampe=currentMillis;intervalLampe = 4000;
+    }
+
   }
 
   delay(100);
