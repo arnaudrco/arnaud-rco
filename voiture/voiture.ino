@@ -11,7 +11,7 @@
 #define DROITE 1 // tourne à droite
 #define GAUCHE 2 // tourne à gauche
 #define MILIEU 510 // pont de résistance 1024 / 2 environ
-#define MAX 160 // sensibilite maximum
+#define MAX 200 // sensibilite maximum
 #define MIN 0 // sensibilite min
 //const int sensibilite = MAX; // écart admisensibiliteible par rapport à la valeur initiale
 int initial ; // valeur initiale du capteur balance lumière
@@ -23,7 +23,7 @@ const char *password = "12345678";      // mot de pasensibilitee       (*** A mo
 //ESP8266WebServer server(80);   
 
 int AA=600; // target Speed
-int sensibilite= MAX / 2 ; // sensibilité
+int sensibilite= MAX /2 ; // sensibilité
 char buffer[30];
 unsigned long tempoLampe = 0;        // will store last time LAMPE was updated
 const long intervalLampe = 2000; 
@@ -75,12 +75,11 @@ digitalWrite(PinB, LOW);
          if (initial> 100){   // lecture des valeurs initiales (on suppose que les capteurs sont de part et d'autre de la ligne)
              bip();
          }
-     if(abs( initial-MILIEU) < (sensibilite/2)){
+     if(abs( initial-MILIEU) < (sensibilite)){
        bip();
      }  else{
-      initial = MILIEU;
+      initial = MILIEU;// la balance est trop désequilibrée 
      }
-     sensibilite=MIN+10;
        delay(1000);
 }
 void bip(){ // test moteur 
@@ -106,6 +105,9 @@ void loop()
     digitalWrite(SpeedA, 0);
     digitalWrite(SpeedB, 0);
    }
+
+  if (valeur > 100){   // le capteur est bien présent
+ 
   if (abs(valeur - initial) < sensibilite)  {
     if(dir!= 0){ 
       Serial.println(valeur);Serial.println("tout droit");
@@ -129,6 +131,7 @@ void loop()
           digitalWrite(PinA, LOW);digitalWrite(PinB, LOW); analogWrite(SpeedA, AA); digitalWrite(SpeedB, 0);
     }
 
+  }
   }
   }
   
