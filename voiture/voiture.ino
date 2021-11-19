@@ -11,11 +11,12 @@
 #define DROITE 1 // tourne à droite
 #define GAUCHE 2 // tourne à gauche
 #define MILIEU 510 // pont de résistance 1024 / 2 environ
-#define MAX 200 // sensibilite maximum
-#define MIN 0 // sensibilite min
-//const int sensibilite = MAX; // écart admisensibiliteible par rapport à la valeur initiale
+#define SENS_MAX 200 // sensibilite maximum
+#define SENS_MIN 0 // sensibilite min
+#define SENS_INIT 50 // sensibilite initiale
 int initial ; // valeur initiale du capteur balance lumière
 int dir= 0; // direction 0 : tout droit
+int sensibilite= SENS_MAX /2 ; // sensibilité
 
 IPAddress    apIP(44, 44, 44, 44);      // Définition de l'adresse IP statique.
 // const char *ssid = "RCO";      // Nom du reseau wifi (*** A modifier ***)
@@ -23,7 +24,6 @@ const char *password = "12345678";      // mot de pasensibilitee       (*** A mo
 //ESP8266WebServer server(80);   
 
 int AA=600; // target Speed
-int sensibilite= MAX /2 ; // sensibilité
 char buffer[30];
 unsigned long tempoLampe = 0;        // will store last time LAMPE was updated
 const long intervalLampe = 2000; 
@@ -71,16 +71,17 @@ digitalWrite(PinB, LOW);
   
   server.begin();
   bip();  // test moteur
-   initial = analogRead(capteur);
-         if (initial> 100){   // lecture des valeurs initiales (on suppose que les capteurs sont de part et d'autre de la ligne)
+   initial = analogRead(capteur);// lecture des valeurs initiales (on suppose que les capteurs sont de part et d'autre de la ligne)
+         if (initial> 100){   // 2° bip : capteur présent
              bip();
          }
-     if(abs( initial-MILIEU) < (sensibilite)){
+     if(abs( initial-MILIEU) < sensibilite){
        bip();
      }  else{
       initial = MILIEU;// la balance est trop désequilibrée 
      }
        delay(1000);
+       sensibilite = SENS_INIT;
 }
 void bip(){ // test moteur 
         digitalWrite(PinA, LOW);digitalWrite(PinB, LOW);
@@ -148,7 +149,7 @@ if(request.indexOf("LED0=2") != -1){
   analogWrite(SpeedA,AA);analogWrite(SpeedB,AA);
 }
 if(request.indexOf("LED0=3") != -1){
-  sensibilite +=10; if(sensibilite>MAX) sensibilite=MAX;
+  sensibilite +=10; if(sensibilite>SENS_MAX) sensibilite=SENS_MAX;
   
 }
 //-----------------PAVE CENTRE------------
@@ -175,7 +176,7 @@ if(request.indexOf("LED0=8") != -1){
   analogWrite(SpeedA,AA);analogWrite(SpeedB,AA);
 }
 if(request.indexOf("LED0=9") != -1){
- sensibilite -=10; if(sensibilite<MIN) sensibilite=MIN;
+ sensibilite -=10; if(sensibilite<SENS_MIN) sensibilite=SENS_MIN;
 }
 // Affichage de la vitesensibilitee
 sprintf(buffer, " M=%d (%d) B=%d", AA, valeur - initial,sensibilite);
