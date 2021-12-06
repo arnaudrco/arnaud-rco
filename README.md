@@ -1,8 +1,6 @@
 # arnaud-rco
-Ateliers numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/)
 
-[wiki](https://github.com/anumby-source/jouets/wiki)
-
+[Wiki](https://github.com/anumby-source/jouets/wiki) du [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/)
 
 Nous préparons les animations du  "repair café numérique" de FESTISOL avec des maquettes, et la présentation de Nathan ( éco-délégué du Lycée Blaise Pascal d’Orsay ) sur le numérique vert. 
 
