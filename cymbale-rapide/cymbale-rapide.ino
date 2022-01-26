@@ -2,6 +2,9 @@
 // interface MIDI
 // http://projectgus.github.io/hairless-midiserial/
 
+#include <SoftwareSerial.h>
+SoftwareSerial mySerial(8, 9);  // RX, TX for MIDI
+
 const int analog_pins[] = {A0, A1, A2, A3, A4,A5};
 const int threshold = 50 ;  // threshold value to decide when the detected sound is a knock or not
 const int threshold_max = 100 ; // 
@@ -10,6 +13,7 @@ const int boton2 =  3; // extra sound
 const int gnd =  4; // masse pour résistance 1Mo
 const int gnd1 =  13; // masse pour résistance 470 Ko 
 const int debug_pin =  12; // masse si debug 
+
 #define NBDRUMS 4 // nombre de batteries - 1
 
 // these variables will change:
@@ -45,7 +49,8 @@ void loop() {
     vel = analogRead(analog_pins[i]);     // this function determines the peak value of the sensor i
    
         if (vel > threshold_max) {
-
+          int v = (vel - threshold) /10 ;
+          if (v > 127 ) v=127;
           if (cooldown[i] == 0) {
               noteIsOn[i] = false ; // 
               if (i == 4) {
@@ -59,7 +64,7 @@ void loop() {
     
            if(debug) Serial.println(vel);
            if( noteIsOn[i] == false) {
-          notaON(i, 100);
+          notaON(i, v);
            }
       } else if (vel < threshold) noteIsOn[i] = false;
 }
@@ -71,6 +76,8 @@ void notaON(int i, int vitesse) {
   Serial.println("--------------------------------");
    Serial.println(i);
    Serial.println(vel);
+
+
  }
  else {
     byte buf[3];
@@ -78,6 +85,10 @@ void notaON(int i, int vitesse) {
     buf[1] = i + 60;
     buf[2] =vitesse;
     Serial.write(buf,3);
+
+  mySerial.write(153);
+  mySerial.write(i + 60);
+  mySerial.write(vitesse);
  }
   noteIsOn[i] = true; 
   delay(100);
