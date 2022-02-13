@@ -1,6 +1,6 @@
 # arnaud-rco
 
-[Github](https://github.com/arnaudrco) et [Wiki](https://github.com/anumby-source/jouets/wiki) Ateliers Numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/)
+Ateliers Numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/)
 Nous préparons les animations du  "repair café numérique" de FESTISOL avec des maquettes, et la présentation de Nathan ( éco-délégué du Lycée Blaise Pascal d’Orsay ) sur le numérique vert. 
 
 maquettes : des jouets écologiques ou recyclés pour enfants, un tournesol pour orienter des panneaux solaires, un capteur CO2 avec en démonstration le modèle destiné au Collège de Bures de l'association ANUMBY, une course de voiture commandées par des cellules solaires, une horloge à marée
