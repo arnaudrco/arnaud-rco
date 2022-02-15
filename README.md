@@ -1,8 +1,8 @@
 # arnaud-rco
 
-Ateliers Numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/)
+anumby : [developpement-voiture](https://github.com/anumby-source/developpement-voiture/wiki) [jouets](https://github.com/anumby-source/jouets/wiki) [raspberry-pico](https://github.com/anumby-source/raspberry-pico/wiki) arnaudrco : [exemples-de-montages](https://github.com/arnaudrco/exemples/wiki) [visio](https://github.com/arnaudrco/visio/wiki) [festisol](https://github.com/arnaudrco/festisol/wiki) [CROUS-micro-python](https://github.com/arnaudrco/CROUS-micro-python/wiki) [piano](https://github.com/arnaudrco/piano-pour-adulte-debutant/wiki) Ateliers Numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/) 
 
-[voiture festisol](https://github.com/arnaudrco/festisol/blob/main/voiture/voiture-circuit.mp4)
+[video voiture festisol : modèle avec 2 cellules solaires](https://github.com/arnaudrco/festisol/blob/main/voiture/voiture-circuit.mp4)
 
 Animations du  "repair café numérique" de FESTISOL 2021 avec des maquettes, et la présentation de Nathan ( éco-délégué du Lycée Blaise Pascal d’Orsay ) sur le numérique vert. 
 
