@@ -13,3 +13,8 @@ le numérique vert : le numérique consomme de l'énergie ? utilisez le numériq
 Jeux fabriqués avec des ojects recyclés, du bois ou du carton : Jacadi a dit dans une boite de bonbons, je dessine avec un petit écran  sur arduino uno, un tournesol avec servomoteur, un tournesol avec moteur pas à pas recyclé, batterie sans console réalisée avec un jouet recyclé
 
 ![cymbale](https://github.com/arnaudrco/arnaud-rco/blob/main/cymbale.PNG)
+
+
+https://user-images.githubusercontent.com/90700891/156876407-70889997-c303-4ee5-93cb-685f14db6c77.mp4
+
+
