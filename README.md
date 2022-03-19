@@ -14,7 +14,7 @@ Jeux fabriqués avec des ojects recyclés, du bois ou du carton : Jacadi a dit�
 
 ![cymbale](https://github.com/arnaudrco/arnaud-rco/blob/main/cymbale.PNG)
 
-Jacadi dans une boîte en bois doté d'une pile rechargeable et un led multicolore : il accepte pleins de nouveaux boutons
+Jacadi dans une boîte en bois doté d'une pile rechargeable et une led multicolore : il accepte pleins de nouveaux boutons
 
 
 https://user-images.githubusercontent.com/90700891/156876407-70889997-c303-4ee5-93cb-685f14db6c77.mp4
