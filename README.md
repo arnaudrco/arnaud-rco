@@ -2,6 +2,12 @@
 
 anumby : [developpement-voiture](https://github.com/anumby-source/developpement-voiture/wiki) [jouets](https://github.com/anumby-source/jouets/wiki) [raspberry-pico](https://github.com/anumby-source/raspberry-pico/wiki) arnaudrco : [exemples-de-montages](https://github.com/arnaudrco/exemples/wiki) [visio](https://github.com/arnaudrco/visio/wiki) [festisol](https://github.com/arnaudrco/festisol/wiki) [CROUS-micro-python](https://github.com/arnaudrco/CROUS-micro-python/wiki) [piano](https://github.com/arnaudrco/piano-pour-adulte-debutant/wiki) Ateliers Numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/) 
 
+
+
+
+https://user-images.githubusercontent.com/90700891/205489928-36f38cd2-be5b-4fa2-b296-b903782ce42b.mp4
+
+
 Animations du  "repair café numérique" de FESTISOL 2021 avec des maquettes, et la présentation de Nathan ( éco-délégué du Lycée Blaise Pascal d’Orsay ) sur le numérique vert. 
 
 maquettes : des jouets écologiques ou recyclés pour enfants, un tournesol pour orienter des panneaux solaires, un capteur CO2 avec en démonstration le modèle destiné au Collège de Bures de l'association ANUMBY, une course de voiture commandées par des cellules solaires, une horloge à marée
