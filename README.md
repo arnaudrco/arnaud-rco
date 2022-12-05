@@ -2,7 +2,7 @@
 
 anumby : [developpement-voiture](https://github.com/anumby-source/developpement-voiture/wiki) [jouets](https://github.com/anumby-source/jouets/wiki) [raspberry-pico](https://github.com/anumby-source/raspberry-pico/wiki) arnaudrco : [exemples-de-montages](https://github.com/arnaudrco/exemples/wiki) [visio](https://github.com/arnaudrco/visio/wiki) [festisol](https://github.com/arnaudrco/festisol/wiki) [CROUS-micro-python](https://github.com/arnaudrco/CROUS-micro-python/wiki) [piano](https://github.com/arnaudrco/piano-pour-adulte-debutant/wiki) Ateliers Numériques [Repair Café d'Orsay](https://www.repaircafe-orsay.org/category/blog/ateliers-numeriques-blog/) 
 
-
+Article [anumby](https://www.anumby.org/anumby-prepare-festisol-2022/)
 
 
 https://user-images.githubusercontent.com/90700891/205489928-36f38cd2-be5b-4fa2-b296-b903782ce42b.mp4
